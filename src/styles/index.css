@@ -287,18 +287,41 @@ h1, h2, h3, h4, h5, h6 {
   html {
     font-size: 15px;
   }
-  
-  section {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-  }
 
-  .desktop-only-nav {
+  .hide-on-mobile {
     display: none !important;
   }
+
+  .mobile-subtle-sticker {
+    width: 44px !important;
+    opacity: 0.55 !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .proposal-threat-sticker-top {
+    top: -16px !important;
+    left: -6px !important;
+    width: 62px !important;
+  }
+  .proposal-threat-sticker-bottom {
+    bottom: -16px !important;
+    right: -6px !important;
+    width: 62px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .askout-options-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
   
-  .mobile-only-toggle {
-    display: flex !important;
+  .askout-ticket-right {
+    border-left: none !important;
+    border-top: 1.5px dashed rgba(141, 11, 11, 0.25) !important;
+    padding-left: 0 !important;
+    padding-top: 16px !important;
   }
 }
 
@@ -311,3 +334,4 @@ h1, h2, h3, h4, h5, h6 {
     scroll-behavior: auto !important;
   }
 }
+

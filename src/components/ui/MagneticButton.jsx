@@ -70,9 +70,9 @@ export const MagneticButton = ({
   };
 
   const sizeStyles = {
-    sm: { padding: '8px 18px', fontSize: '0.875rem' },
-    md: { padding: '14px 28px', fontSize: '1rem' },
-    lg: { padding: '18px 36px', fontSize: '1.125rem' }
+    sm: { padding: '8px 16px', fontSize: '0.85rem' },
+    md: { padding: 'clamp(10px, 2.5vw, 14px) clamp(16px, 3.5vw, 26px)', fontSize: 'clamp(0.9rem, 2.4vw, 1rem)' },
+    lg: { padding: 'clamp(12px, 3vw, 16px) clamp(18px, 4vw, 32px)', fontSize: 'clamp(0.92rem, 2.6vw, 1.08rem)' }
   };
 
   const currentVariant = variantStyles[variant] || variantStyles.primary;
@@ -90,16 +90,19 @@ export const MagneticButton = ({
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '10px',
+        gap: '8px',
         borderRadius: 'var(--radius-pill)',
         fontFamily: 'var(--font-display)',
         fontWeight: 700,
         letterSpacing: '0.02em',
         cursor: disabled ? 'not-allowed' : 'pointer',
         textDecoration: 'none',
-        whiteSpace: 'nowrap',
         userSelect: 'none',
         opacity: disabled ? 0.6 : 1,
+        maxWidth: '100%',
+        boxSizing: 'border-box',
+        textAlign: 'center',
+        lineHeight: 1.3,
         ...currentVariant,
         ...currentSize
       }}
@@ -112,7 +115,7 @@ export const MagneticButton = ({
 
   if (to) {
     return (
-      <a href={to} onClick={handleClick} style={{ textDecoration: 'none', display: 'inline-block' }}>
+      <a href={to} onClick={handleClick} style={{ textDecoration: 'none', display: 'inline-block', maxWidth: '100%', boxSizing: 'border-box' }}>
         {content}
       </a>
     );
@@ -120,14 +123,14 @@ export const MagneticButton = ({
 
   if (href) {
     return (
-      <a href={href} onClick={handleClick} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'inline-block' }}>
+      <a href={href} onClick={handleClick} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', display: 'inline-block', maxWidth: '100%', boxSizing: 'border-box' }}>
         {content}
       </a>
     );
   }
 
   return (
-    <button onClick={handleClick} disabled={disabled} style={{ background: 'none', border: 'none', padding: 0, display: 'inline-block' }}>
+    <button onClick={handleClick} disabled={disabled} style={{ background: 'none', border: 'none', padding: 0, display: 'inline-block', maxWidth: '100%', boxSizing: 'border-box' }}>
       {content}
     </button>
   );

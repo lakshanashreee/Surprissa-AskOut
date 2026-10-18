@@ -120,12 +120,12 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
     playPop();
     setHasDodged(true);
 
-    const btnWidth = 100;
-    const btnHeight = 50;
-    const margin = 30;
+    const btnWidth = 80;
+    const btnHeight = 44;
+    const margin = 16;
 
-    const maxW = typeof window !== 'undefined' ? Math.max(margin, window.innerWidth - btnWidth - margin) : 400;
-    const maxH = typeof window !== 'undefined' ? Math.max(margin, window.innerHeight - btnHeight - margin) : 400;
+    const maxW = typeof window !== 'undefined' ? Math.max(margin, window.innerWidth - btnWidth - margin) : 320;
+    const maxH = typeof window !== 'undefined' ? Math.max(margin, window.innerHeight - btnHeight - margin) : 500;
 
     const newX = margin + Math.random() * (maxW - margin);
     const newY = margin + Math.random() * (maxH - margin);
@@ -155,30 +155,31 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
     <div style={{
       position: 'relative',
       width: '100%',
-      minHeight: '100vh',
+      minHeight: '100dvh',
       color: 'var(--color-ivory)',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'center',
-      padding: 'clamp(20px, 5vw, 48px)',
+      padding: 'clamp(16px, 3.5vw, 40px) clamp(12px, 3vw, 24px)',
+      boxSizing: 'border-box',
       overflowX: 'hidden'
     }}>
 
-      {/* Floating Aesthetic Stickers */}
-      <div style={{ position: 'absolute', top: '20px', left: '20px', width: 'clamp(65px, 10vw, 115px)', pointerEvents: 'none', zIndex: 2, opacity: 0.9 }} className="animate-float">
+      {/* Floating Aesthetic Stickers - Sized fluidly, bottom ones hidden on mobile to avoid overlap */}
+      <div style={{ position: 'absolute', top: '16px', left: '16px', width: 'clamp(42px, 7vw, 95px)', pointerEvents: 'none', zIndex: 1, opacity: 0.85 }} className="animate-float">
         <img src="/assets/flowers/Pink flower.png" alt="Pink Flower" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.35))' }} />
       </div>
 
-      <div style={{ position: 'absolute', top: '20px', right: '20px', width: 'clamp(70px, 11vw, 125px)', pointerEvents: 'none', zIndex: 2, opacity: 0.9 }} className="animate-float-delayed">
+      <div style={{ position: 'absolute', top: '16px', right: '16px', width: 'clamp(46px, 7.5vw, 105px)', pointerEvents: 'none', zIndex: 1, opacity: 0.85 }} className="animate-float-delayed">
         <img src="/assets/flowers/blue-anemone-flower.png" alt="Blue Flower" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.35))' }} />
       </div>
 
-      <div style={{ position: 'absolute', bottom: '20px', left: '20px', width: 'clamp(75px, 12vw, 130px)', pointerEvents: 'none', zIndex: 2, opacity: 0.9 }} className="animate-float-delayed">
+      <div style={{ position: 'absolute', bottom: '20px', left: '20px', width: 'clamp(65px, 10vw, 120px)', pointerEvents: 'none', zIndex: 1, opacity: 0.9 }} className="hide-on-mobile animate-float-delayed">
         <img src="/assets/cat/catwiththreebouquet.png" alt="Cat with Bouquets" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.35))' }} />
       </div>
 
-      <div style={{ position: 'absolute', bottom: '20px', right: '20px', width: 'clamp(65px, 10vw, 110px)', pointerEvents: 'none', zIndex: 2, opacity: 0.9 }} className="animate-float">
+      <div style={{ position: 'absolute', bottom: '20px', right: '20px', width: 'clamp(60px, 9vw, 105px)', pointerEvents: 'none', zIndex: 1, opacity: 0.9 }} className="hide-on-mobile animate-float">
         <img src="/assets/stickers/cutestwithbouquet.png" alt="Cute Bouquet" style={{ width: '100%', height: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.35))' }} />
       </div>
 
@@ -192,51 +193,55 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           animate={{ scale: 1, opacity: 1 }}
           exit={{ scale: 0.92, opacity: 0 }}
           transition={{ duration: 0.4 }}
-          style={{ textAlign: 'center', maxWidth: '640px', width: '100%', zIndex: 10 }}
+          style={{ textAlign: 'center', maxWidth: '640px', width: '100%', margin: 'auto 0', zIndex: 10 }}
         >
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             color: 'var(--color-peach-primary)',
-            fontSize: '0.85rem',
+            fontSize: 'clamp(0.68rem, 2.2vw, 0.82rem)',
             fontWeight: 800,
             textTransform: 'uppercase',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.08em',
             marginBottom: '14px',
             backgroundColor: 'rgba(255, 217, 194, 0.1)',
-            padding: '6px 16px',
+            padding: '6px 14px',
             borderRadius: 'var(--radius-pill)',
-            border: '1px solid rgba(255, 217, 194, 0.25)'
+            border: '1px solid rgba(255, 217, 194, 0.25)',
+            maxWidth: '100%',
+            boxSizing: 'border-box'
           }}>
-            <ShieldAlert size={18} color="var(--color-peach-primary)" />
+            <ShieldAlert size={16} color="var(--color-peach-primary)" />
             CLASSIFIED INCOMING TRANSMISSION FOR {recipientName.toUpperCase()} ✦ LEVEL 1
           </div>
 
           <h1 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.8rem, 4.5vw, 2.8rem)',
+            fontSize: 'clamp(1.5rem, 4.5vw, 2.6rem)',
             color: 'var(--color-peach-primary)',
             fontStyle: 'italic',
-            marginBottom: '12px',
+            marginBottom: '10px',
             lineHeight: 1.25
           }}>
             "{recipientName}, Hold to Calibrate Mutual Chemistry"
           </h1>
 
-          <p style={{ fontSize: '0.98rem', color: 'var(--color-peach-soft)', marginBottom: '28px', lineHeight: 1.6 }}>
+          <p style={{ fontSize: 'clamp(0.85rem, 2.4vw, 0.98rem)', color: 'var(--color-peach-soft)', marginBottom: '22px', lineHeight: 1.5 }}>
             Press and hold down continuously until calibration reaches 100%. Releasing early resets to 0%!
           </p>
 
           {/* Interactive Biometric Sensor (Continuous Press & Hold) */}
           <div style={{
             backgroundColor: 'var(--color-burgundy-primary)',
-            borderRadius: '30px',
-            padding: '38px 24px',
+            borderRadius: '24px',
+            padding: 'clamp(24px, 5vw, 36px) clamp(16px, 4vw, 24px)',
             border: '2px solid var(--color-peach-primary)',
             boxShadow: 'var(--shadow-glow)',
-            marginBottom: '24px',
-            position: 'relative'
+            marginBottom: '20px',
+            position: 'relative',
+            boxSizing: 'border-box',
+            width: '100%'
           }}>
             <div style={{ position: 'relative', width: '136px', height: '136px', margin: '0 auto 24px' }}>
               {/* Circular SVG Progress Ring */}
@@ -350,55 +355,59 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          style={{ width: '100%', maxWidth: '800px', textAlign: 'center', zIndex: 10 }}
+          style={{ width: '100%', maxWidth: '780px', margin: 'auto 0', textAlign: 'center', zIndex: 10 }}
         >
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
             color: 'var(--color-peach-primary)',
-            fontSize: '0.85rem',
+            fontSize: 'clamp(0.68rem, 2.2vw, 0.82rem)',
             fontWeight: 800,
             textTransform: 'uppercase',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.08em',
             marginBottom: '10px',
             backgroundColor: 'rgba(255, 217, 194, 0.1)',
-            padding: '6px 16px',
+            padding: '6px 14px',
             borderRadius: 'var(--radius-pill)',
-            border: '1px solid rgba(255, 217, 194, 0.25)'
+            border: '1px solid rgba(255, 217, 194, 0.25)',
+            maxWidth: '100%',
+            boxSizing: 'border-box'
           }}>
-            <Utensils size={18} /> STEP 2 ✦ CO-DESIGN OUR ITINERARY
+            <Utensils size={16} /> STEP 2 ✦ CO-DESIGN OUR ITINERARY
           </div>
 
           <h2 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(1.8rem, 4.5vw, 2.7rem)',
+            fontSize: 'clamp(1.5rem, 4.5vw, 2.6rem)',
             color: 'var(--color-peach-primary)',
             fontStyle: 'italic',
-            marginBottom: '8px',
+            marginBottom: '6px',
             lineHeight: 1.25
           }}>
             "{recipientName}, if we go out, what's our move?"
           </h2>
-          <p style={{ fontSize: '0.95rem', color: 'var(--color-peach-soft)', marginBottom: '26px' }}>
+          <p style={{ fontSize: 'clamp(0.85rem, 2.4vw, 0.95rem)', color: 'var(--color-peach-soft)', marginBottom: '20px', lineHeight: 1.5 }}>
             Pick your favorites to customize the official blueprint for our upcoming adventure.
           </p>
 
           <div style={{
             backgroundColor: 'var(--color-burgundy-primary)',
-            borderRadius: '26px',
-            padding: '30px 24px',
+            borderRadius: '24px',
+            padding: 'clamp(20px, 4vw, 32px) clamp(14px, 3.5vw, 24px)',
             border: '2px solid var(--color-peach-primary)',
             boxShadow: 'var(--shadow-glow)',
-            marginBottom: '28px',
-            textAlign: 'left'
+            marginBottom: '24px',
+            textAlign: 'left',
+            boxSizing: 'border-box',
+            width: '100%'
           }}>
             {/* 1. Food Picker */}
-            <div style={{ marginBottom: '24px' }}>
-              <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '12px', letterSpacing: '0.04em' }}>
+            <div style={{ marginBottom: '22px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '10px', letterSpacing: '0.04em' }}>
                 1. The Food & Fuel:
               </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+              <div className="askout-options-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
                 {[
                   "Ramen & Dumplings",
                   "Coffee & Pastries",
@@ -409,17 +418,23 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                     key={food}
                     onClick={() => { playPop(); setSelectedFood(food); }}
                     style={{
-                      padding: '14px 16px',
+                      padding: 'clamp(10px, 2.5vw, 14px) clamp(8px, 2vw, 14px)',
                       borderRadius: '14px',
                       backgroundColor: selectedFood === food ? 'var(--color-peach-primary)' : 'rgba(0,0,0,0.35)',
                       color: selectedFood === food ? 'var(--color-burgundy-dark)' : 'var(--color-peach-soft)',
                       border: selectedFood === food ? '2px solid var(--color-peach-primary)' : '1px solid rgba(255, 217, 194, 0.22)',
                       cursor: 'pointer',
                       fontWeight: 700,
-                      fontSize: '0.88rem',
+                      fontSize: 'clamp(0.78rem, 2.2vw, 0.88rem)',
                       fontFamily: 'var(--font-display)',
                       transition: 'all 0.2s ease',
-                      boxShadow: selectedFood === food ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none'
+                      boxShadow: selectedFood === food ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none',
+                      minHeight: '48px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      wordBreak: 'break-word'
                     }}
                   >
                     {food}
@@ -429,11 +444,11 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
             </div>
 
             {/* 2. Activity Picker */}
-            <div style={{ marginBottom: '24px' }}>
-              <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '12px', letterSpacing: '0.04em' }}>
+            <div style={{ marginBottom: '22px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '10px', letterSpacing: '0.04em' }}>
                 2. The Adventure:
               </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+              <div className="askout-options-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
                 {[
                   "Arcade & Mario Kart",
                   "Bookstore Wandering",
@@ -444,17 +459,23 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                     key={act}
                     onClick={() => { playPop(); setSelectedActivity(act); }}
                     style={{
-                      padding: '14px 16px',
+                      padding: 'clamp(10px, 2.5vw, 14px) clamp(8px, 2vw, 14px)',
                       borderRadius: '14px',
                       backgroundColor: selectedActivity === act ? 'var(--color-peach-primary)' : 'rgba(0,0,0,0.35)',
                       color: selectedActivity === act ? 'var(--color-burgundy-dark)' : 'var(--color-peach-soft)',
                       border: selectedActivity === act ? '2px solid var(--color-peach-primary)' : '1px solid rgba(255, 217, 194, 0.22)',
                       cursor: 'pointer',
                       fontWeight: 700,
-                      fontSize: '0.88rem',
+                      fontSize: 'clamp(0.78rem, 2.2vw, 0.88rem)',
                       fontFamily: 'var(--font-display)',
                       transition: 'all 0.2s ease',
-                      boxShadow: selectedActivity === act ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none'
+                      boxShadow: selectedActivity === act ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none',
+                      minHeight: '48px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      wordBreak: 'break-word'
                     }}
                   >
                     {act}
@@ -465,10 +486,10 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
 
             {/* 3. Dress Code */}
             <div>
-              <span style={{ fontSize: '0.88rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '12px', letterSpacing: '0.04em' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 800, color: 'var(--color-peach-primary)', display: 'block', marginBottom: '10px', letterSpacing: '0.04em' }}>
                 3. The Vibe & Dress Code:
               </span>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+              <div className="askout-options-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px' }}>
                 {[
                   "Oversized Hoodies & Sneakers",
                   "Matching Sunglasses",
@@ -478,17 +499,23 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                     key={vibe}
                     onClick={() => { playPop(); setSelectedVibe(vibe); }}
                     style={{
-                      padding: '14px 16px',
+                      padding: 'clamp(10px, 2.5vw, 14px) clamp(8px, 2vw, 14px)',
                       borderRadius: '14px',
                       backgroundColor: selectedVibe === vibe ? 'var(--color-peach-primary)' : 'rgba(0,0,0,0.35)',
                       color: selectedVibe === vibe ? 'var(--color-burgundy-dark)' : 'var(--color-peach-soft)',
                       border: selectedVibe === vibe ? '2px solid var(--color-peach-primary)' : '1px solid rgba(255, 217, 194, 0.22)',
                       cursor: 'pointer',
                       fontWeight: 700,
-                      fontSize: '0.88rem',
+                      fontSize: 'clamp(0.78rem, 2.2vw, 0.88rem)',
                       fontFamily: 'var(--font-display)',
                       transition: 'all 0.2s ease',
-                      boxShadow: selectedVibe === vibe ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none'
+                      boxShadow: selectedVibe === vibe ? '0 4px 15px rgba(255, 217, 194, 0.35)' : 'none',
+                      minHeight: '48px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      textAlign: 'center',
+                      wordBreak: 'break-word'
                     }}
                   >
                     {vibe}
@@ -499,7 +526,7 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           </div>
 
           <MagneticButton onClick={() => { playSuccess(); setCurrentLayer(3); }} variant="primary" size="lg">
-            Lock In Date Specs & Proceed to Proposal →
+            Lock In Date Specs & Proceed →
           </MagneticButton>
         </motion.div>
       )}
@@ -514,13 +541,13 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          style={{ textAlign: 'center', maxWidth: '660px', width: '100%', position: 'relative', zIndex: 10 }}
+          style={{ textAlign: 'center', maxWidth: '640px', width: '100%', margin: 'auto 0', position: 'relative', zIndex: 10 }}
         >
-          {/* Playful Threat Meme Stickers in Corners */}
-          <div style={{ position: 'absolute', top: '-28px', left: '-28px', width: '105px', pointerEvents: 'none', zIndex: 12 }} className="animate-float">
+          {/* Playful Threat Meme Stickers in Corners - Sized and positioned safely to never overlap headers or card boundaries */}
+          <div style={{ position: 'absolute', top: '-24px', left: '-12px', width: 'clamp(55px, 12vw, 95px)', pointerEvents: 'none', zIndex: 12 }} className="proposal-threat-sticker-top animate-float">
             <img src="/assets/threat/cutest with knife.png" alt="Cute Kitten with Knife" style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.45))' }} />
           </div>
-          <div style={{ position: 'absolute', bottom: '-28px', right: '-28px', width: '105px', pointerEvents: 'none', zIndex: 12 }} className="animate-float-delayed">
+          <div style={{ position: 'absolute', bottom: '-24px', right: '-12px', width: 'clamp(55px, 12vw, 95px)', pointerEvents: 'none', zIndex: 12 }} className="proposal-threat-sticker-bottom animate-float-delayed">
             <img src="/assets/threat/cutestwithgun.png" alt="Cute Kitten with Gun" style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 10px 25px rgba(0,0,0,0.45))' }} />
           </div>
 
@@ -529,15 +556,17 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
             alignItems: 'center',
             gap: '8px',
             color: 'var(--color-peach-primary)',
-            fontSize: '0.85rem',
+            fontSize: 'clamp(0.68rem, 2.2vw, 0.82rem)',
             fontWeight: 800,
             textTransform: 'uppercase',
-            letterSpacing: '0.12em',
+            letterSpacing: '0.08em',
             marginBottom: '10px',
             backgroundColor: 'rgba(255, 217, 194, 0.1)',
-            padding: '6px 16px',
+            padding: '6px 14px',
             borderRadius: 'var(--radius-pill)',
-            border: '1px solid rgba(255, 217, 194, 0.25)'
+            border: '1px solid rgba(255, 217, 194, 0.25)',
+            maxWidth: '100%',
+            boxSizing: 'border-box'
           }}>
             <Sparkles size={16} /> OFFICIAL PROPOSAL FOR {recipientName.toUpperCase()} ✦ FINAL STEP
           </div>
@@ -545,43 +574,48 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           {/* Proposal Card - Fixed layout, never changes when NO button roams */}
           <div style={{
             backgroundColor: 'var(--color-burgundy-primary)',
-            borderRadius: '30px',
-            padding: '48px 32px',
+            borderRadius: '24px',
+            padding: 'clamp(28px, 6vw, 44px) clamp(16px, 4.5vw, 32px)',
             border: '2px solid var(--color-peach-primary)',
             boxShadow: 'var(--shadow-glow)',
-            margin: '22px 0',
-            minHeight: '280px',
+            margin: '18px 0',
+            minHeight: '260px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'relative'
+            position: 'relative',
+            boxSizing: 'border-box',
+            width: '100%',
+            overflow: 'hidden'
           }}>
             <h3 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: 'clamp(1.7rem, 4.2vw, 2.4rem)',
+              fontSize: 'clamp(1.4rem, 4.2vw, 2.2rem)',
               color: 'var(--color-peach-primary)',
-              marginBottom: '18px',
+              marginBottom: '14px',
               fontStyle: 'italic',
-              lineHeight: 1.3
+              lineHeight: 1.35
             }}>
               "So {recipientName}... will you get {selectedFood.split(' ')[0]} with me and play {selectedActivity.split(' ')[0]} this Friday?"
             </h3>
 
-            <p style={{ fontSize: '0.9rem', color: 'var(--color-peach-soft)', marginBottom: '32px' }}>
+            <p style={{ fontSize: 'clamp(0.82rem, 2.2vw, 0.9rem)', color: 'var(--color-peach-soft)', marginBottom: '26px' }}>
               (Refusal is legally prohibited by the cuteness protocol above)
             </p>
 
-            {/* Stable Button Row - YES remains rock steady; NO starts beside it then roams freely */}
+            {/* Stable Button Row - Fits within card boundaries on phone, tablet, and desktop */}
             <div style={{
               display: 'flex',
-              gap: '24px',
+              flexWrap: 'wrap',
+              gap: 'clamp(10px, 2.5vw, 18px)',
               justifyContent: 'center',
               alignItems: 'center',
-              minHeight: '56px',
+              width: '100%',
+              minHeight: '52px',
               position: 'relative'
             }}>
-              <MagneticButton variant="primary" size="lg" onClick={handleAcceptProposal}>
+              <MagneticButton variant="primary" size="md" onClick={handleAcceptProposal}>
                 YES! ABSOLUTELY 💖
               </MagneticButton>
 
@@ -594,7 +628,7 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                   onPointerDown={handleRunawayNo}
                   onClick={handleRunawayNo}
                   style={{
-                    padding: '14px 34px',
+                    padding: '12px 24px',
                     borderRadius: 'var(--radius-pill)',
                     border: '1.5px solid rgba(255,255,255,0.3)',
                     background: 'rgba(0,0,0,0.35)',
@@ -602,16 +636,17 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                     cursor: 'pointer',
                     fontFamily: 'var(--font-display)',
                     fontWeight: 800,
-                    fontSize: '1rem',
+                    fontSize: 'clamp(0.85rem, 2.4vw, 0.95rem)',
                     letterSpacing: '0.05em',
                     userSelect: 'none',
-                    transition: 'all 0.15s ease'
+                    transition: 'all 0.15s ease',
+                    minWidth: '72px'
                   }}
                 >
                   NO
                 </button>
               ) : (
-                <div style={{ width: '96px', height: '52px', pointerEvents: 'none', opacity: 0 }} />
+                <div style={{ width: '72px', height: '44px', pointerEvents: 'none', opacity: 0 }} />
               )}
             </div>
           </div>
@@ -629,7 +664,7 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
               style={{
                 position: 'fixed',
                 zIndex: 999999,
-                padding: '14px 34px',
+                padding: '12px 24px',
                 borderRadius: 'var(--radius-pill)',
                 border: '1.5px solid rgba(255,255,255,0.45)',
                 background: 'rgba(38, 3, 3, 0.95)',
@@ -637,7 +672,7 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
                 cursor: 'pointer',
                 fontFamily: 'var(--font-display)',
                 fontWeight: 800,
-                fontSize: '1rem',
+                fontSize: 'clamp(0.85rem, 2.4vw, 0.95rem)',
                 letterSpacing: '0.05em',
                 userSelect: 'none',
                 WebkitUserSelect: 'none',
@@ -661,29 +696,29 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.5 }}
-          style={{ width: '100%', maxWidth: '840px', textAlign: 'center', zIndex: 10 }}
+          style={{ width: '100%', maxWidth: '820px', margin: 'auto 0', textAlign: 'center', zIndex: 10 }}
         >
           {/* Virtual Bouquet Delivery Graphic */}
           <motion.div
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            style={{ marginBottom: '24px' }}
+            style={{ marginBottom: '20px' }}
           >
-            <div style={{ width: '140px', margin: '0 auto 14px' }}>
+            <div style={{ width: 'clamp(95px, 16vw, 135px)', margin: '0 auto 12px' }}>
               <img
                 src="/assets/flowers/bouquet.png"
                 alt="Virtual Bouquet"
                 style={{ width: '100%', height: 'auto', filter: 'drop-shadow(0 12px 35px rgba(255, 217, 194, 0.55))' }}
               />
             </div>
-            <span style={{ fontSize: '0.88rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--color-peach-primary)' }}>
+            <span style={{ fontSize: 'clamp(0.75rem, 2.2vw, 0.88rem)', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: 'var(--color-peach-primary)' }}>
               ✦ VIRTUAL BOUQUET DELIVERED TO {recipientName.toUpperCase()} ✦
             </span>
-            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(2.4rem, 6vw, 3.8rem)', color: 'var(--color-peach-primary)', fontStyle: 'italic', margin: '8px 0' }}>
+            <h1 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.7rem, 5.5vw, 3.2rem)', color: 'var(--color-peach-primary)', fontStyle: 'italic', margin: '6px 0' }}>
               IT'S OFFICIALLY A DATE, {recipientName.toUpperCase()}!
             </h1>
-            <p style={{ fontFamily: 'var(--font-handwriting)', fontSize: '1.85rem', color: 'var(--color-ivory)', margin: '4px 0 16px' }}>
+            <p style={{ fontFamily: 'var(--font-handwriting)', fontSize: 'clamp(1.15rem, 3.5vw, 1.7rem)', color: 'var(--color-ivory)', margin: '4px 0 14px' }}>
               "You made the absolute best choice, {recipientName}. Best date of the year is officially booked."
             </p>
           </motion.div>
@@ -692,16 +727,18 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
           <div style={{
             backgroundColor: '#FFF4EB',
             color: '#2B0404',
-            borderRadius: '26px',
-            padding: '32px 28px',
+            borderRadius: '24px',
+            padding: 'clamp(20px, 4vw, 32px) clamp(16px, 4vw, 28px)',
             border: '2px solid var(--color-peach-primary)',
             boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-            marginBottom: '32px',
+            marginBottom: '28px',
             textAlign: 'left',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-            gap: '24px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+            gap: 'clamp(16px, 3vw, 24px)',
             position: 'relative',
+            boxSizing: 'border-box',
+            width: '100%',
             overflow: 'hidden'
           }}>
             {/* Cutout Ticket Notches */}
@@ -709,35 +746,35 @@ export const AskOutLiveExperience = ({ recipientName = "Stacy", onComplete }) =>
             <div style={{ position: 'absolute', top: '50%', right: '-14px', width: '28px', height: '28px', borderRadius: '50%', backgroundColor: 'var(--color-burgundy-deepest)', transform: 'translateY(-50%)' }} />
 
             <div>
-              <span style={{ fontSize: '0.76rem', fontWeight: 800, textTransform: 'uppercase', color: '#8D0B0B', letterSpacing: '0.1em' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, textTransform: 'uppercase', color: '#8D0B0B', letterSpacing: '0.1em' }}>
                 OFFICIAL DATE PASS #2026
               </span>
-              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: '1.75rem', color: '#8D0B0B', margin: '6px 0 2px' }}>
+              <h3 style={{ fontFamily: 'var(--font-serif)', fontSize: 'clamp(1.4rem, 3.8vw, 1.75rem)', color: '#8D0B0B', margin: '6px 0 2px' }}>
                 Friday Evening @ 7:30 PM
               </h3>
-              <p style={{ fontSize: '0.92rem', color: '#666', margin: '0 0 10px' }}>
+              <p style={{ fontSize: '0.88rem', color: '#666', margin: '0 0 10px' }}>
                 Location: Our secret cozy spot
               </p>
-              <div style={{ display: 'inline-block', backgroundColor: 'rgba(141, 11, 11, 0.1)', color: '#8D0B0B', padding: '4px 12px', borderRadius: 'var(--radius-pill)', fontSize: '0.8rem', fontWeight: 800 }}>
+              <div style={{ display: 'inline-block', backgroundColor: 'rgba(141, 11, 11, 0.1)', color: '#8D0B0B', padding: '4px 12px', borderRadius: 'var(--radius-pill)', fontSize: '0.78rem', fontWeight: 800 }}>
                 Guest of Honor: {recipientName}
               </div>
             </div>
 
-            <div style={{ borderLeft: '1.5px dashed rgba(141, 11, 11, 0.3)', paddingLeft: '24px' }}>
-              <div style={{ fontSize: '0.92rem', marginBottom: '8px', color: '#2B0404' }}>
+            <div className="askout-ticket-right" style={{ borderLeft: '1.5px dashed rgba(141, 11, 11, 0.3)', paddingLeft: 'clamp(16px, 3vw, 24px)' }}>
+              <div style={{ fontSize: '0.9rem', marginBottom: '8px', color: '#2B0404' }}>
                 <strong style={{ color: '#8D0B0B' }}>Food & Fuel:</strong> {selectedFood}
               </div>
-              <div style={{ fontSize: '0.92rem', marginBottom: '8px', color: '#2B0404' }}>
+              <div style={{ fontSize: '0.9rem', marginBottom: '8px', color: '#2B0404' }}>
                 <strong style={{ color: '#8D0B0B' }}>Adventure:</strong> {selectedActivity}
               </div>
-              <div style={{ fontSize: '0.92rem', color: '#2B0404' }}>
+              <div style={{ fontSize: '0.9rem', color: '#2B0404' }}>
                 <strong style={{ color: '#8D0B0B' }}>Dress Code:</strong> {selectedVibe}
               </div>
             </div>
           </div>
 
           {/* Action Row - Cleaned up without Save To Calendar */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '16px', marginTop: '16px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '12px', marginTop: '16px' }}>
             <button
               onClick={handleReplay}
               style={{
