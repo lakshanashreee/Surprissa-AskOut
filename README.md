@@ -1,16 +1,18 @@
-# React + Vite
+# Official Ask Out Website — For Stacy 💖
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personalized, cinematic, multi-layered interactive date proposal web application created exclusively for Stacy.
 
-Currently, two official plugins are available:
+## ✨ Experience Highlights
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. **Biometric Chemistry Scanner (Level 1)**: Interactive touch & hold scanner with real-time mutual chemistry calibration and compatibility detection.
+2. **Co-Design Itinerary Picker (Level 2)**: Custom food, adventure activity, and aesthetic vibe selection for the upcoming date.
+3. **The Proposal & Elusive 'No' Button (Level 3)**: A playful proposal contract guarded by cute knife and gun cat memes, complete with a runaway 'No' button that dodges the cursor with spring physics.
+4. **Grand Virtual Bouquet & Golden Date Ticket (Level 4)**: Virtual bouquet delivery, a custom notched Golden Date Pass #2026, calendar download (.ics), replay functionality, and celebration confetti cannons.
 
-## React Compiler
+## 🚀 Running the Project
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+```
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+The application will launch directly into the personalized experience for Stacy.

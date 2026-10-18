@@ -47,7 +47,7 @@ export const Sticker = ({
         userSelect: 'none',
         zIndex: 5
       }}
-      className={`surprissa-sticker ${className}`}
+      className={`askout-sticker ${className}`}
     >
       {Icon && <Icon size={14} />}
       <span>{text}</span>
